@@ -1,0 +1,45 @@
+<idea-plugin version="2">
+  <id>com.github.kxbmap.intellij.utf8bom</id>
+  <name>UTF8 BOM</name>
+  <version>1.0</version>
+  <vendor url="http://www.github.com/kxbmap/utf8bom">Tsukasa Kitachi</vendor>
+
+  <description><![CDATA[
+      Provides support for UTF-8 BOM
+      <ul>
+        <li>Add BOM on saving file</li>
+      </ul>
+      ]]></description>
+
+  <change-notes><![CDATA[
+      ]]>
+  </change-notes>
+
+  <idea-version since-build="123.4" until-build="123.9999"/>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileDocumentManagerListener id="utf8bom"
+                                 implementation="com.github.kxbmap.intellij.utf8bom.DocumentSaveListener"/>
+    <projectConfigurable instance="com.github.kxbmap.intellij.utf8bom.ProjectSettingConfigurable"/>
+    <projectService serviceInterface="com.github.kxbmap.intellij.utf8bom.ProjectSettingComponent"
+                    serviceImplementation="com.github.kxbmap.intellij.utf8bom.ProjectSettingComponent"/>
+  </extensions>
+</idea-plugin>
