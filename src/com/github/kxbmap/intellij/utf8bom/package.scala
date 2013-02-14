@@ -12,7 +12,7 @@ import scala.util.matching.Regex
 
 package object utf8bom {
 
-  private[utf8bom] implicit class StringOps(val __string: String) extends AnyVal {
+  private[utf8bom] implicit final class StringOps(val __string: String) extends AnyVal {
     def blob: Regex = __string.flatMap {
       case '?' => "."
       case '*' => ".*"
@@ -22,30 +22,30 @@ package object utf8bom {
     }.r
   }
 
-  private[utf8bom] implicit class RegexOps(val __regex: Regex) extends AnyVal {
+  private[utf8bom] implicit final class RegexOps(val __regex: Regex) extends AnyVal {
     def matches(s: String): Boolean = __regex.pattern.matcher(s).matches()
   }
 
-  private[utf8bom] implicit class ClassOps[T](val __class: Class[T]) extends AnyVal {
+  private[utf8bom] implicit final class ClassOps[T](val __class: Class[T]) extends AnyVal {
     def as[U]: Class[U] = __class.asInstanceOf[Class[U]]
   }
 
 
-  private[utf8bom] implicit class ProjectOps(val __project: Project) extends AnyVal {
+  private[utf8bom] implicit final class ProjectOps(val __project: Project) extends AnyVal {
     def service[T : ClassTag]: Option[T] =
       Option(ServiceManager.getService(__project, classTag[T].runtimeClass.as[T]))
   }
 
-  private[utf8bom] implicit class DocumentOps(val __document: Document) extends AnyVal {
+  private[utf8bom] implicit final class DocumentOps(val __document: Document) extends AnyVal {
     def file: Option[VirtualFile] = Option(FileDocumentManager.getInstance.getFile(__document))
   }
 
-  private[utf8bom] implicit class VirtualFileOps(val __file: VirtualFile) extends AnyVal {
+  private[utf8bom] implicit final class VirtualFileOps(val __file: VirtualFile) extends AnyVal {
     def guessProject: Option[Project] = Option(ProjectUtil.guessProjectForFile(__file))
   }
 
 
-  private[utf8bom] implicit class ContainerOps(val __container: Container) extends AnyVal {
+  private[utf8bom] implicit final class ContainerOps(val __container: Container) extends AnyVal {
     def setEnabledAll(b: Boolean) {
       __container.setEnabled(b)
       __container.getComponents foreach {
@@ -54,6 +54,9 @@ package object utf8bom {
       }
     }
   }
+
+
+  import scala.language.implicitConversions
 
   private[utf8bom] implicit def toItemListener(body: ItemEvent => Unit): ItemListener =
     new ItemListener {
