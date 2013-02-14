@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.github.kxbmap.intellij.utf8bom</id>
   <name>UTF8 BOM</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor url="http://www.github.com/kxbmap/utf8bom">Tsukasa Kitachi</vendor>
 
   <description><![CDATA[
