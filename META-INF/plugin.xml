@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.github.kxbmap.intellij.utf8bom</id>
   <name>UTF8 BOM</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <vendor url="http://www.github.com/kxbmap/utf8bom">Tsukasa Kitachi</vendor>
 
   <description><![CDATA[
@@ -15,7 +15,7 @@
       ]]>
   </change-notes>
 
-  <idea-version since-build="123.4" until-build="129.9999"/>
+  <idea-version since-build="130.555" until-build="139.9999"/>
 
   <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->
